@@ -22,6 +22,15 @@ The project delivers data-driven answers to these 5 operational goals:
 
 ---
 
+## 🔍 Data Architecture & Model Verification
+
+> 📁 **Repository Artifacts Note:** High-resolution presentation layouts are detailed below. To inspect the live data models, entity relationships, and calculation mechanics that power these visuals, you can download the raw working workbooks directly via these secure download vectors:
+> * 📊 [Download Raw Power BI Model (.pbix)](PASTE_YOUR_POWERBI_DRIVE_LINK_HERE)
+> * 🎨 [Download Raw Tableau Packaged Workbook (.twbx)](PASTE_YOUR_TABLEAU_DRIVE_LINK_HERE)
+> * 📈 [Download Raw Excel Source Model (.xlsx)](PASTE_YOUR_EXCEL_DRIVE_LINK_HERE)
+
+---
+
 ## 🖼️ Business Intelligence Dashboards (Multi-Tool Implementation)
 
 > 💡 Project Delivery Note: High-resolution operational layout previews are embedded below for immediate documentation review. The raw source workbooks (.pbix, .xlsx, .twbx) are accessible directly within the /Dashboards repository directory to allow full auditing of data connections, model architectures, and backend computations
