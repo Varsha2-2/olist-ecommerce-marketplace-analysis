@@ -16,19 +16,52 @@ The project delivers data-driven answers to these 5 operational goals:
 ---
 
 ## 🛠️ Technical Stack Used
-* **Database Layer:** MySQL 8.0 (Schema mapping, multi-table JOIN optimization, aggregations).
-* **Business Intelligence (BI):** Power BI (DAX metrics design) & Tableau Desktop (Calculated Fields mapping).
+* **Database Layer:** MySQL 8.0 / PostgreSQL (Schema mapping, multi-table JOIN optimization, aggregations).
+* **Business Intelligence & ETL:** Microsoft Excel, Power BI (DAX metrics design), and Tableau Desktop (Calculated Fields mapping).
 * **Version Control:** GitHub.
 
 ---
 
-## 🔗 Live Interactive Dashboards
-* 📊 **[Click Here to View the Power BI Portfolio Dashboard on NovyPro](https://novypro.com)**
-* 🎨 **[Click Here to View the Tableau Interactive Workbook on Tableau Public](https://tableau.com)**
+## 🖼️ Business Intelligence Dashboards (Multi-Tool Implementation)
+
+> 💡 **Note to Hiring Managers:** High-resolution presentation layouts are embedded below for immediate review. Technical peers and hiring teams are invited to download the raw workbooks (`.pbix`, `.xlsx`, `.twbx`) directly from the `/Dashboards` directory to audit backend data models and calculated metrics.
+
+### 1. Power BI Executive Market Overview
+<p align="center">
+  <img src="Dashboards/ecommerce_powerbi_dashboard.png" width="850" alt="Power BI E-commerce Dashboard">
+</p>
+
+* **Advanced Data Modeling:** Formed a streamlined schema connecting transactional fact logs to isolated dimension attributes to handle over **16.01M in Total Revenue** and **96K Total Orders** seamlessly.
+* **Granular KPI Engineering:** Developed precise backend metrics utilizing custom conditional logic to pull high-priority operational insights:
+  * **Core Retail Performance:** Surfaced an **Average Order Value (AOV) of \$165.96** and isolated an **Average Shipping Window of 12.50 Days**.
+  * **Targeted Segmentation:** Extracted complex conditional metrics, pinpointing that **44K Orders** achieved a perfect 5-star rating specifically via credit card payments.
+* **Interactive Filter Panes:** Programmed unified right-aligned slicer trees for `customer_state`, `Day Type`, and `payment_type` to dynamically slice the delivery trends line chart.
+
+---
+
+### 2. Tableau Operational Deep-Dive & Parameter Control
+<p align="center">
+  <img src="Dashboards/ecommerce_tableau_dashboard.png" width="850" alt="Tableau E-commerce Dashboard">
+</p>
+
+* **Dynamic Parameter & Measure Swapping:** Configured a parameter selection control panel (`Dashboard 2 / Param..`) allowing leadership to instantly toggle the entire visual canvas focus metrics between distinct sales variants.
+* **Cross-Tab Level of Detail (LOD) Expressions:** Built synchronized top summary tiles capturing macroscopic indicators (**16.01M Sales, 6.10M Profit, 96K Customers**) that remain anchored regardless of nested sheet actions.
+* **Geospatial & Logistical Mapping:** Leveraged custom fields to map `Average Payment & Price by City` (e.g., contrasting Sao Paulo at \$125.23 vs. Santa Rosa at \$112.32) alongside an analytics scatter chart mapping product-specific shipping distributions.
+
+---
+
+### 3. Excel Core Operations & Interactive Slicer Panel
+<p align="center">
+  <img src="Dashboards/ecommerce_excel_dashboard.png" width="850" alt="Excel E-commerce Dashboard">
+</p>
+
+* **Power Query Data Pipeline:** Ingested messy transactional tables to cleanly group temporal segments, enabling a comprehensive **Weekday vs. Weekend sales** split showing Weekdays leading at **78% (\$24.8M)**.
+* **Multi-Layered Pivot Calculations:** Synthesized complex cross-tabulations to map multi-year growth curves (2016-2018), isolating category-specific profiles like the *Yearwise Profit of Petshops* scaling to **\$33K** in its peak year.
+* **Synchronized Report Slicers:** Engineered a multi-slicer layout panel control (Day, Year, Month, Quarter) that broadcasts global filters across distinct pivot tables to reveal the *Top 5 Products* by overall volume.
 
 ---
 
 ## 💡 Analytical Insights & Strategic Recommendations
-* **Logistics Trajectory vs. Sentiment:** The data confirms a sharp decline in perfect 5-star ratings when delivery timelines exceed 7 business days. 
-* **Credit Dependency Patterns:** High-ticket product segments leverage credit card payment installments heavily on weekdays, whereas smaller basket sizes lean on bank vouchers (`boleto`) during weekends.
-* **São Paulo Dominance:** São Paulo represents the highest concentration of gross merchandise value (GMV), allowing Olist to target local delivery hubs here to optimize shipping costs.
+* **Logistics Trajectory vs. Sentiment:** The data confirms a sharp decline in perfect 5-star ratings when delivery timelines exceed 7 business days. Establishing local delivery hubs in underperforming regional states is recommended to compress the 12.50-day average delivery window.
+* **Credit Dependency Patterns:** High-ticket product segments leverage credit card payment installments heavily on weekdays (accounting for 78% of total volume), whereas smaller basket sizes lean on bank vouchers (`boleto`) during weekends. Launching targeted credit card promotions will help maximize high-value orders.
+* **São Paulo Dominance:** São Paulo represents the highest concentration of gross merchandise value (GMV) with an average transaction value of \$125.23, making it the primary region to optimize inventory fulfillment to prevent seasonal stockouts.
