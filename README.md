@@ -24,7 +24,7 @@ The project delivers data-driven answers to these 5 operational goals:
 
 ## 🖼️ Business Intelligence Dashboards (Multi-Tool Implementation)
 
-> 💡 **Note to Hiring Managers:** High-resolution presentation layouts are embedded below for immediate review. Technical peers and hiring teams are invited to download the raw workbooks (`.pbix`, `.xlsx`, `.twbx`) directly from the `/Dashboards` directory to audit backend data models and calculated metrics.
+> 💡 Project Delivery Note: High-resolution operational layout previews are embedded below for immediate documentation review. The raw source workbooks (.pbix, .xlsx, .twbx) are accessible directly within the /Dashboards repository directory to allow full auditing of data connections, model architectures, and backend computations
 
 ### 1. Power BI Executive Market Overview
 <p align="center">
