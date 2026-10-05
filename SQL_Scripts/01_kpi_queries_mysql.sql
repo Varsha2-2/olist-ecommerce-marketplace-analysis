@@ -1,55 +1,74 @@
--- KPI 1: Weekday Vs Weekend Payment Statistics
-SELECT 
+-- =================================================================================
+-- OLIST E-COMMERCE MARKETPLACE: EXECUTIVE KPI PERFORMANCE SCRIPT
+-- Objective: Evaluate transactional habits, payment trends, and shipping timelines
+-- Data Author: Varsha
+-- =================================================================================
+
+USE ecommerce;
+
+-- 📊 KPI 1: Weekday Vs Weekend Order Volume & Purchasing Distribution
+-- Business Case: Understand customer booking behavior split by day type.
+SELECT
     CASE 
-        WHEN WEEKDAY(o.order_purchase_timestamp) IN (5, 6) THEN 'Weekend'
+        WHEN DAYOFWEEK(Order_Purchase_Timestamp) IN (1, 7) THEN 'Weekend'
         ELSE 'Weekday'
-    END AS purchase_day_type,
-    p.payment_type,
-    COUNT(DISTINCT o.order_id) AS total_orders,
-    ROUND(SUM(p.payment_value), 2) AS total_payment_value,
-    ROUND(AVG(p.payment_value), 2) AS avg_payment_value
-FROM olist_orders_dataset o
-JOIN olist_order_payments_dataset p ON o.order_id = p.order_id
-GROUP BY purchase_day_type, p.payment_type
-ORDER BY purchase_day_type, total_payment_value DESC;
+    END AS Day_Type,
+    COUNT(*) AS Total_Orders
+FROM orders
+WHERE Order_Purchase_Timestamp IS NOT NULL
+GROUP BY Day_Type;
 
--- KPI 2: High-Satisfaction Credit Card Orders
-SELECT 
-    COUNT(DISTINCT o.order_id) AS perfect_credit_orders
-FROM olist_orders_dataset o
-JOIN olist_order_payments_dataset p ON o.order_id = p.order_id
-JOIN olist_order_reviews_dataset r ON o.order_id = r.order_id
-WHERE r.review_score = 5 
-  AND p.payment_type = 'credit_card';
 
--- KPI 3: Average Delivery Days for the "Pet Shop" Category
+-- 📊 KPI 2: Seamless Digital Checkouts (High-Satisfaction Credit Transactions)
+-- Business Case: Isolate the total count of frictionless 5-star order fulfillments.
 SELECT 
-    ROUND(AVG(DATEDIFF(o.order_delivered_customer_date, o.order_purchase_timestamp)), 1) AS avg_delivery_days_pet_shop
-FROM olist_orders_dataset o
-JOIN olist_order_items_dataset i ON o.order_id = i.order_id
-JOIN olist_products_dataset p ON i.product_id = p.product_id
-WHERE p.product_category_name = 'pet_shop'
-  AND o.order_status = 'delivered';
+    COUNT(DISTINCT r.Order_Id) AS total_orders
+FROM order_reviews AS r
+JOIN order_payments AS p
+    ON r.Order_Id = p.Order_Id
+WHERE r.Review_Score = 5
+  AND p.Payment_Type = 'credit_card';
 
--- KPI 4: Financial Metrics for São Paulo City Customers
-SELECT 
-    c.customer_city,
-    ROUND(AVG(i.price), 2) AS avg_item_price,
-    ROUND(AVG(p.payment_value), 2) AS avg_customer_payment
-FROM olist_orders_dataset o
-JOIN olist_order_customer_dataset c ON o.customer_id = c.customer_id
-JOIN olist_order_items_dataset i ON o.order_id = i.order_id
-JOIN olist_order_payments_dataset p ON o.order_id = p.order_id
-WHERE c.customer_city = 'sao paulo'
-GROUP BY c.customer_city;
 
--- KPI 5: Shipping Days Timeline Vs. Customer Review Scores
+-- 📊 KPI 3: Logistical Timelines — Average Processing Window for 'Pet Shop' Verticals
+-- Business Case: Benchmarks real delivery intervals against specific product sectors.
 SELECT 
-    r.review_score,
-    COUNT(o.order_id) AS total_orders,
-    ROUND(AVG(DATEDIFF(o.order_delivered_customer_date, o.order_purchase_timestamp)), 1) AS avg_shipping_days
-FROM olist_orders_dataset o
-JOIN olist_order_reviews_dataset r ON o.order_id = r.order_id
-WHERE o.order_status = 'delivered'
-GROUP BY r.review_score
-ORDER BY r.review_score DESC;
+    ROUND(AVG(DATEDIFF(o.Order_Delivered_Customer_Date, o.Order_Purchase_Timestamp)), 1) AS avg_delivery_days
+FROM orders o
+JOIN order_items oi 
+    ON o.Order_Id = oi.Order_Id
+JOIN products p 
+    ON oi.Product_Id = p.Product_Id
+WHERE p.Product_category_name = 'pet_shop'
+  AND o.Order_Delivered_Customer_Date IS NOT NULL
+  AND o.Order_Purchase_Timestamp IS NOT NULL;
+
+
+-- 📊 KPI 4: Macro Regional Value Concentration — São Paulo Demographic Metrics
+-- Business Case: Profiles asset pricing and total payments inside major economic centers.
+SELECT
+    ROUND(AVG(oi.Price), 2) AS avg_product_price,
+    ROUND(AVG(p.Payment_Value), 2) AS avg_payment_value
+FROM customer c
+JOIN orders o
+    ON c.Customer_Id = o.Customer_Id
+JOIN order_items oi
+    ON o.Order_Id = oi.Order_Id
+JOIN order_payments p
+    ON o.Order_Id = p.Order_Id
+WHERE LOWER(c.City) = 'sao paulo';
+
+
+-- 📊 KPI 5: Correlation Study — Shipping Turnaround Window vs Final Review Score
+-- Business Case: Proves mathematically to leadership how fulfillment speeds protect user retention.
+SELECT 
+    r.Review_Score,
+    ROUND(AVG(DATEDIFF(o.Order_Delivered_Customer_Date, o.Order_Purchase_Timestamp)), 1) AS avg_shipping_days,
+    COUNT(*) AS total_reviews
+FROM order_reviews r
+JOIN orders o
+    ON r.Order_Id = o.Order_Id
+WHERE o.Order_Delivered_Customer_Date IS NOT NULL
+  AND o.Order_Purchase_Timestamp IS NOT NULL
+GROUP BY r.Review_Score
+ORDER BY r.Review_Score DESC;
