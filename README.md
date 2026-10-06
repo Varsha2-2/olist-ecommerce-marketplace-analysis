@@ -25,9 +25,9 @@ The project delivers data-driven answers to these 5 operational goals:
 ## 🔍 Data Architecture & Model Verification
 
 > 📁 **Repository Artifacts Note:** High-resolution presentation layouts are detailed below. To inspect the live data models, entity relationships, and calculation mechanics that power these visuals, you can download the raw working workbooks directly via these secure download vectors:
-> * 📊 [Download Raw Power BI Model (.pbix)](PASTE_YOUR_POWERBI_DRIVE_LINK_HERE)
-> * 🎨 [Download Raw Tableau Packaged Workbook (.twbx)](PASTE_YOUR_TABLEAU_DRIVE_LINK_HERE)
-> * 📈 [Download Raw Excel Source Model (.xlsx)](PASTE_YOUR_EXCEL_DRIVE_LINK_HERE)
+> * 📊 [Download Raw Power BI Model (.pbix)](https://drive.google.com/file/d/1ZxFN5fvwfAjXYvkA1QlPddwk_DoIxc4x/view?usp=sharing)
+> * 🎨 [Download Raw Tableau Packaged Workbook (.twbx)](https://drive.google.com/file/d/1BeimUKzn8RQPC3QiVv-P6cKQ-7LpE0gu/view?usp=sharing)
+> * 📈 [Download Raw Excel Source Model (.xlsx)](https://docs.google.com/spreadsheets/d/1sd0Ymamb54IBKNuP7PaPsJpfZHxf6ie_/edit?usp=sharing&ouid=101703711638777030705&rtpof=true&sd=true)
 
 ---
 
